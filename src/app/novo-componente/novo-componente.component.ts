@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-novo-componente',
-  templateUrl: './novo-componente.component.html',
-  styleUrls: ['./novo-componente.component.css']
+  template: `
+    <input type="text" [disabled]="isDisabled" />
+    <button type="button" (click)="isDisabled = !isDisabled">
+      {{ isDisabled ? 'Habilitar' : 'Desabilitar' }}
+    </button>
+  `,
 })
 //TODO: Crie um botão que quando é pressionado, desabilita um elemento de input
 //TODO: Se for pressionado novamente, habilita o elemento de input
-export class NovoComponenteComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class NovoComponenteComponent {
+  public isDisabled: boolean = false;
 }
