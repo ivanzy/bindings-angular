@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-terceiro',
   template: `
-    <h2 [class]="parOuImpar">{{ getContador() }}</h2>
-    <!--     <input type="text" value="{{ texto }}" [disabled]="isDisable" />
- -->
-    <button type="button" (click)="cliqueBotao()">CLIQUE EM MIM</button>
+    <h2 [class]="contador % 2 == 0 ? 'par' : 'impar'">{{ contador }}</h2>
+    <button type="button" (click)="contador = contador + 1 ">
+      INCREMENTO
+    </button>
   `,
   styles: [
     `
@@ -20,20 +20,6 @@ import { Component } from '@angular/core';
   ],
 })
 export class TerceiroComponent {
-
   public parOuImpar: string = 'par';
-  private contador: number = 0;
-
-  public cliqueBotao() {
-    console.log('BOTÃO CLICADO! ' + ++this.contador);
-    if (this.contador % 2 == 0) {
-      console.log('par');
-      this.parOuImpar = 'par';
-    } else {
-      this.parOuImpar = 'impar';
-    }
-  }
-  public getContador() {
-    return this.contador;
-  }
+  public contador: number = 0;
 }
