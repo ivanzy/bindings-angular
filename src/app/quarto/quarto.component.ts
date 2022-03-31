@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-quarto',
-  template: `
-    <input [(ngModel)]="campo" type="text"  />
-    {{ campo }}
+  template: ` <input type="text" [(ngModel)]="campoTexto" />
+    {{ campoTexto }}
   `,
 })
 export class QuartoComponent {
-  campo: string = 'Digite seu email';
+  campoTexto: string;
+  constructor(){
+    this.campoTexto = "Digite algo"
+  }
 }

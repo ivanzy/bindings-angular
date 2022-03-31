@@ -9,16 +9,22 @@ import { Component } from '@angular/core';
       #campoVerificaSenha
       (blur)="verificadorDeSenha(campoSenha.value, campoVerificaSenha.value)"
     />
-    <div>{{ textoSenha }}</div>
+    <div *ngIf="senhaDiferente; then apareceTrue; else apareceFalse">
+      <h1>Senhas não coincidem</h1>
+    </div>
 
+    <ng-template #apareceTrue>
+      Senhas não coicidem. DENTRO DE UM NG-TEMPLATE
+    </ng-template>
 
+    <ng-template #apareceFalse>
+      Senhas coicidem ou não foi digitado. DENTRO DE UM NG-TEMPLATE
+    </ng-template>
   `,
 })
 export class TerceiroComponent {
-  public textoSenha: string = '';
+  public senhaDiferente: boolean = false;
   public verificadorDeSenha(senha: string, verificaSenha: string): void {
-    if (senha !== verificaSenha)
-      this.textoSenha = 'Senhas digitadas não coincidem';
-    else this.textoSenha = '';
+    this.senhaDiferente = senha !== verificaSenha;
   }
 }

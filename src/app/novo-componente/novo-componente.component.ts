@@ -3,14 +3,24 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-novo-componente',
   template: `
-    <input type="text" [disabled]="isDisabled" />
-    <button type="button" (click)="isDisabled = !isDisabled">
-      {{ isDisabled ? 'Habilitar' : 'Desabilitar' }}
+    <input type="text" [disabled]="isDesabilitado" />
+    <button type="button" (click)="controlaDesabilita()">
+      {{ textoBotao }}
     </button>
   `,
 })
-//TODO: Crie um botão que quando é pressionado, desabilita um elemento de input
-//TODO: Se for pressionado novamente, habilita o elemento de input
 export class NovoComponenteComponent {
-  public isDisabled: boolean = false;
+  public isDesabilitado: boolean;
+  public textoBotao: string;
+  constructor() {
+    this.isDesabilitado = false;
+    this.textoBotao = this.mudaTextoBotao();
+  }
+  public controlaDesabilita(): void {
+    this.isDesabilitado = !this.isDesabilitado;
+    this.textoBotao = this.mudaTextoBotao();
+  }
+
+  private mudaTextoBotao = (): string =>
+    this.isDesabilitado ? 'HABILITAR' : 'DESABILITAR';
 }

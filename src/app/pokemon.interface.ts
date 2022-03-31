@@ -5,6 +5,14 @@ export interface PokemonInterface {
   moveset: string[];
 }
 
+export class Pokemon implements PokemonInterface {
+  nome: string = "";
+  level: number = 0;
+  tipo: tiposPokemon = tiposPokemon.Normal;
+  moveset: string[] = [];
+
+}
+
 export enum tiposPokemon {
   Normal = 'Normal',
   Fire = 'Fire',
